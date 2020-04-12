@@ -1,4 +1,4 @@
-var socket = io.connect('http://localhost:5000'); 
+var socket = io.connect(document.URL); 
 
 var answersFrom = {}, offer;
 var peerConnection = window.RTCPeerConnection ||
@@ -17,11 +17,7 @@ var sessionDescription = window.RTCSessionDescription ||
     navigator.msGetUserMedia;
 
 var pc = new peerConnection({
-    iceServers: [{
-        url: "stun:stun.services.mozilla.com",
-        username: "somename",
-        credential: "somecredentials"
-    }]
+    iceServers: [{ url: "stun:stun4.l.google.com:19302" }, { url: "turn:dev.e-kasbon.co.id:3478", username: '123', credential: '123' }, { url: 'turn:numb.viagenie.ca:3478', username: 'fonetix@gmail.com', credential: 'goer1thea' }]
 });
 
 pc.onaddstream = function (obj) {
